@@ -1,40 +1,20 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
 const dataSchema = mongoose.Schema({
-    email : {
-        type : String,
+    email: {
+        type: String,
         validate: {
             validator: function(v) {
-                return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v);
+                return /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(v);
             },
-            message: props => `${props.value} is not a valid email!`
+            message: props => `${props.value} is not a valid email address!`
         },
-        required: [true, 'User email required']
+        required: [true, 'User email address required']
     },
-    otp:{
+    otp : {
         type : String,
         required: true
     }
-},{timestamps:true,versionKey:false})
-
-
-
+}, {timestamps:true,versionKey:false});
 const userModel = mongoose.model("users",dataSchema);
-module.exports = userModel
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = userModel;

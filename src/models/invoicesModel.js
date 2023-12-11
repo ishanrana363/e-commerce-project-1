@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const {mongo} = require("mongoose");
 const dataSchema = mongoose.Schema({
     userID : {
         type : mongoose.Types.objectId,
@@ -8,48 +9,41 @@ const dataSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    cus_Details : {
-        type: String,
-        required: true
+    cus_details : {
+        type : String,
+        required : true
     },
-    ship_Details : {
-        type: String,
-        required: true
+    ship_details : {
+        type : String,
+        required : true
     },
-    tran_ID : {
-        type: String,
-        required: true
+    tran_id : {
+        type : String,
+        required : true
     },
-    val_ID : {
-        type: String,
-        required: true
+    val_id : {
+        type : String,
+        required : true,
     },
-    delivery_Status : {
-        type: String,
-        required: true
+    delivery_status : {
+        type : String,
+        required : true
     },
-    payment_Status : {
-        type: String,
-        required: true
+    payment_status : {
+        type : String,
+        required : true
     },
     total : {
-        type: String,
-        required: true
+        type : String,
+        required : true
     },
     vat : {
-        type: String,
-        required: true
+        type : String,
+        required : true
     }
 },{timestamps:true,versionKey:false});
-
-const invoicesModel = mongoose.model("invoice",dataSchema);
-module.exports = invoicesModel;
-
-
-
-
-
-
+const invoicesModel = mongoose.model("invoices",dataSchema);
+module.exports = invoicesModel
 
 
 

@@ -6,7 +6,7 @@ const dataSchema = mongoose.Schema({
     },
     invoiceID : {
         type : mongoose.Types.objectId,
-        required : true
+        required: true
     },
     productID : {
         type : mongoose.Types.objectId,
@@ -18,18 +18,15 @@ const dataSchema = mongoose.Schema({
     },
     price : {
         type : String,
-        required : true
+        required : true,
     },
     color : {
         type : String,
         required : true
     },
     size : {
-        type : String,
-        required : true
-    },
+        type : String
+    }
 },{timestamps:true,versionKey:false});
-
 const invoiceProductModel = mongoose.model("invoiceProducts",dataSchema);
-module.exports = invoiceProductModel;
-
+module.exports = invoiceProductModel

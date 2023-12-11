@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const dataSchema  = mongoose.Schema({
-    store_Id : {
+const dataSchema = mongoose.Schema({
+    store_id : {
         type : String,
         required : true
     },
-    store_Password : {
+    store_password : {
         type : String,
-        required : true
+        required: true
     },
     currency : {
         type : String,
@@ -16,53 +16,22 @@ const dataSchema  = mongoose.Schema({
         type : String,
         required : true
     },
-    fil_Url : {
+    fail_url : {
         type : String,
         required : true
     },
-    cancel_Url : {
+    cancel_url : {
         type : String,
         required : true
     },
-    ipn_Url : {
+    ipn_url : {
         type : String,
         required : true
     },
-    init_Url : {
+    init_url : {
         type : String,
         required : true
-    },
+    }
 },{timestamps:true,versionKey:false})
-
 const paymentSettingModel = mongoose.model("paymentsSetting",dataSchema);
 module.exports = paymentSettingModel
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

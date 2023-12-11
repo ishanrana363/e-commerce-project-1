@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const dataSchema = mongoose.Schema({
     name : {
         type : String,
@@ -7,45 +6,12 @@ const dataSchema = mongoose.Schema({
     },
     description : {
         type : String,
-        required : true
+        required: true
     },
     img : {
         type : String,
         required : true
     }
-},{timestamps:true,versionKey:false});
-
-const featuresModel = mongoose.model("features",dataSchema);
-
-module.exports = featuresModel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+},{timestamps:true,versionKey:false})
+const featureModel = mongoose.model("features",dataSchema);
+module.exports = featureModel;

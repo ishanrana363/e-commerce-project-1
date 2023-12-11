@@ -1,29 +1,21 @@
 const mongoose = require("mongoose");
 const dataSchema = mongoose.Schema({
-    userID : {
+    userId : {
         type : mongoose.Types.objectId,
-        required : true
+        required : true,
     },
     productID : {
         type: mongoose.Types.objectId,
         required: true
     },
-    description:{
+    comments : {
         type : String,
-        required : true,
+        required : true
     },
-    rating : {
+    ratings : {
         type : String,
         required : true
     }
 },{timestamps:true,versionKey:false});
-
-
-const reviewModel = mongoose.model("review",dataSchema);
+const reviewModel = mongoose.model("reviews",dataSchema);
 module.exports = reviewModel
-
-
-
-
-
-

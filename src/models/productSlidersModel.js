@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const dataSchema = mongoose.Schema({
     title : {
         type : String,
-        required : true
+        required : true,
     },
     des : {
         type : String,
-        required : true
+        required: true,
     },
     price : {
         type : String,
@@ -16,19 +16,10 @@ const dataSchema = mongoose.Schema({
         type : String,
         required : true
     },
-},{timestamps:true,versionKey:false})
-
-const productSlider = mongoose.model("productSlider",dataSchema)
+    productID : {
+        type : mongoose.Types.objectId,
+        required : true
+    }
+},{timestamps:true,versionKey:false});
+const productSlider = mongoose.model("productSliders",dataSchema);
 module.exports = productSlider
-
-
-
-
-
-
-
-
-
-
-
-

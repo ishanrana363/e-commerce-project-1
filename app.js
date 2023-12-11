@@ -2,6 +2,7 @@ const express = require("express")
 const path = require("path");
 const app = express()
 
+const  routes = require("./src/routes/api")
 // Security Middleware library Import
 
 const rateLimit = require("express-rate-limit");
@@ -31,6 +32,8 @@ const limit = rateLimit(
 app.use(limit)
 
 app.use(express.static("client/dist"))
+
+app.use("/api/v1",routes)
 
 
 // Add React Front-End Routing
