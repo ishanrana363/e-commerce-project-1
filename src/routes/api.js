@@ -1,6 +1,7 @@
 const express =  require("express");
 const router = express.Router()
 const productController = require("../controllers/productController")
+const userController = require("../controllers/userController")
 
 // Product
 
@@ -16,6 +17,10 @@ router.get("/product-details/:productID",productController.productDetails);
 router.get("/product-review-list/:productID",productController.productReviewList);
 router.post("/create-product-review-list/:productID",productController.productReviewCreate);
 
+// User
+
+router.get("/user-otp/:email",userController.userOtp);
+router.get("/user-verify/:email/:otp",userController.userVerifyLogin);
 
 
 module.exports = router

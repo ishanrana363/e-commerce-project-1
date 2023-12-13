@@ -1,22 +1,28 @@
-const nodemailer = require("nodemailer")
+const nodemailer = require('nodemailer');
+require("dotenv").config()
+let pass = process.env.SMTP_PASS
+let smtpTransport = require("nodemailer-smtp-transport");
 
-const sentEmail = async (emailTo,emailText,emailSub) =>{
-    let transporter = nodemailer.createTransport({
-        host:"mail.teamrabbil.com",
-        port : 25,
-        secure:false,
-        auth:{
-            user : "info@teamrabbil.com",
-            pass : '~sR4[bhaC[Qs'
-        },
-        tls: {rejectUnauthorized: false},
-    })
-    let mailOption = {
-        from : "MERN E-Commerce Solution <info@teamrabbil.com> ",
-        to:emailTo,
-        subject: emailSub ,
-        text: emailText
-    }
-    return await transporter.sendMail(mailOption)
+const SendEmailUtility= async (EmailTo, EmailText, EmailSubject) => {
+
+    let transporter = nodemailer.createTransport(
+        smtpTransport ({
+                service: "Gmail",
+                auth: {
+                    user: "ishanrana094@gmail.com",
+                    pass: pass
+                },
+            }
+        )
+    );
+    let mailOptions = {
+        from: 'ishanrana094@gmail.com',
+        to: EmailTo,
+        subject: EmailSubject,
+        text: EmailText
+    };
+
+    return  await transporter.sendMail(mailOptions)
+
 }
-module.exports = sentEmail;
+module.exports=SendEmailUtility
