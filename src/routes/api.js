@@ -9,12 +9,12 @@ router.get("/product-category-list",productController.productCategoryList);
 router.get("/product-slider-list",productController.productSliderList);
 router.get("/product-brand-by-list/:BrandID",productController.productByBrandList);
 router.get("/product-category-by-list/:CategoryID",productController.productByCategoryList);
-router.get("/product-similar-by-list/:keyword",productController.productBySimilerList);
-router.get("/product-keyword-by-list/:keyword",productController.productByKeyword);
+router.get("/product-similar-by-list/:CategoryID",productController.productBySimilerList);
+router.get("/product-keyword-by-list/:Keyword",productController.productByKeyword);
 router.get("/product-remark-list/:remark",productController.productByRemarkList);
 router.get("/product-details/:productID",productController.productDetails);
 router.get("/product-review-list/:productID",productController.productReviewList);
-router.get("/create-product-review-list/:productID",productController.productReviewCreate);
+router.post("/create-product-review-list/:productID",productController.productReviewCreate);
 
 
 

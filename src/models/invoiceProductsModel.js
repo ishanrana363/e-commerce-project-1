@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const dataSchema = mongoose.Schema({
     userID : {
-        type : mongoose.Types.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         required : true
     },
     invoiceID : {
-        type : mongoose.Types.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     productID : {
-        type : mongoose.Types.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         required : true
     },
     qty : {

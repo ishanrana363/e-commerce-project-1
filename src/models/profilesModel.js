@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const dataSchema = mongoose.Schema({
-    userID : {
-        type : mongoose.Types.objectId,
+    userID  : {
+        type: mongoose.Schema.Types.ObjectId,
         required : true
     },
     cus_add : {
@@ -16,16 +16,20 @@ const dataSchema = mongoose.Schema({
         type : String,
         required : true,
     },
-    cus_name : {
+    cus_fax : {
         type : String,
         required : true,
     },
-    cus_phone : {
+    cus_name : {
         type : String,
         required : true
     },
-    cus_postcode : {
+    cus_phone : {
         type : true,
+        required : true
+    },
+    cus_postcode : {
+        type : String,
         required : true
     },
     cus_state : {
@@ -34,17 +38,17 @@ const dataSchema = mongoose.Schema({
     },
     ship_add : {
         type : String,
-        required : true
-    },
-    ship_city : {
-        type : String,
         required : true,
+    },
+    ship_city  : {
+        type : String,
+        required : true
     },
     ship_country : {
         type : String,
         required : true
     },
-    ship_name : {
+    ship_name: {
         type : String,
         required : true
     },
@@ -59,7 +63,7 @@ const dataSchema = mongoose.Schema({
     ship_state : {
         type : String,
         required : true
-    },
+    }
 },{timestamps:true,versionKey:false});
 const profileModel = mongoose.model("profiles",dataSchema);
 module.exports = profileModel;

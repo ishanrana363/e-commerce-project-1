@@ -17,7 +17,7 @@ const dataSchema = mongoose.Schema({
         required : true
     },
     productID : {
-        type : mongoose.Types.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         required : true
     }
 },{timestamps:true,versionKey:false});

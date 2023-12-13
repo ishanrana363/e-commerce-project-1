@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const dataSchema = mongoose.Schema({
     productID : {
-        type : mongoose.Types.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         required : true
     },
     userID : {
-        type: mongoose.Types.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     color : {

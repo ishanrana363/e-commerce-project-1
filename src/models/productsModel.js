@@ -1,59 +1,48 @@
-const mongoose =  require("mongoose");
-const dataSchema = mongoose.Schema({
-    title : {
-        type : String,
-        required : true
+const mongoose = require("mongoose");
+
+const dataSchema =  mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
     },
-    shortDes : {
-        type:String,
-        required : true
+    shortDes: {
+        type: String,
+        required: true,
     },
-    price : {
-        type : String,
-        required : true
+    price: {
+        type: String,
+        required: true,
     },
-    discount : {
-        type : String
+    discount: {
+        type: String,
     },
-    discountPrice : {
-        type : String
+    discountPrice: {
+        type: String,
     },
-    image : {
-        type : String,
-        required : true
+    image: {
+        type: String,
+        required: true,
     },
-    star : {
-        type : String
+    star: {
+        type: String,
     },
-    stock : {
-        type : String,
-        required : true
+    stock: {
+        type: String,
+        required: true,
     },
-    remark : {
-        type : String,
-        required : true
+    remark: {
+        type: String,
+        required: true,
     },
-    categoryID : {
-        type : mongoose.Types.objectId,
-        required : true
+    categoryID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+    },
+    brandID : {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
     }
-},{timestamps:true,versionKey:false});
+}, { timestamps: true, versionKey: false });
 
-const productModel = mongoose.model("products",dataSchema);
+const productModel = mongoose.model("products", dataSchema);
 module.exports = productModel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
