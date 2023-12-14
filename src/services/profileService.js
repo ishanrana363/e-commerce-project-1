@@ -1,5 +1,6 @@
 const SendEmailUtility = require("../utility/emailHelper");
-const userModel = require("../models/usersModel")
+const userModel = require("../models/usersModel");
+const profilesModel = require("../models/profilesModel")
 const {EncodeToken} = require("../utility/tokenHelper");
 const userOtpService = async (req) => {
     try {
@@ -28,6 +29,7 @@ const userVerifyLoginService = async (req) => {
         let otp=req.params.otp;
         // User Count
         let total=await userModel.find({email:email,otp:otp}).count('total');
+        console.log(total)
         if(total===1){
             // User ID Read
             let user_id=await userModel.find({email:email,otp:otp}).select('_id');
@@ -49,24 +51,68 @@ const userVerifyLoginService = async (req) => {
 
 
 
-const userLogoutService = async () => {
 
+const saveProfileService = async (req) => {
+    try {
+        let user_id = req.headers.user_id;
+        console.log(user_id)
+        let reqBody = req.body;
+        reqBody.userID = user_id;
+        console.log(reqBody)
+        let data = await profilesModel.updateOne({userID:user_id},{$set:reqBody},{upsert:true})
+        return {
+            status : "success",
+            data : data
+        }
+    }catch (e) {
+        return {status:"fail", data : e.toString()}
+    }
 }
-const saveProfileService = async () => {
 
+const userProfileReadService = async (req) => {
+    try {
+        let user_id = req.headers.user_id;
+        console.log(user_id)
+        let data = await profilesModel.find({userID:user_id});
+        return {
+            status : "success",
+            data : data
+        }
+    }
+    catch (e) {
+        return {
+            status : "fail",
+            data : e.toString()
+        }
+    }
 }
 
-const userProfileReadService = async () => {
 
+const userProfileDeleteService = async (req) => {
+    try {
+        let user_id = req.headers.user_id;
+        console.log(user_id)
+        let data = await profilesModel.deleteOne({userID:user_id});
+        return {
+            status : "success",
+            data : data
+        }
+    }
+    catch (e) {
+        return {
+            status : "fail",
+            data : e.toString()
+        }
+    }
 }
 
 
 module.exports = {
     userOtpService,
     userVerifyLoginService,
-    userLogoutService,
     saveProfileService,
-    userProfileReadService
+    userProfileReadService,
+    userProfileDeleteService
 }
 
 
