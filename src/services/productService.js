@@ -253,17 +253,27 @@ const productDetailsService = async (req) => {
         }
     }
 }
-const productReviewListService = async (req) =>{
+
+const ReviewListService = async (req) =>{
     try {
         let ProductID = new mongoose.Types.ObjectId(req.params.productID);
-        let matchStage = { $match : { productID : ProductID } }
+        let matchStage = { $match : { productID:ProductID } };
+        let joinWithProfile = {
+            $lookup : {
+                from :"profiles" , localField : "userID" , foreignField : "userID", as : "profile"
+            }
+        }
+        let unwindProfile = { $unwind : "$profile" }
         let data = await reviewModel.aggregate([
-            matchStage
+            matchStage,
+            joinWithProfile,
+            unwindProfile
         ])
-        return {
+        return{
             status : "success",
             data : data
         }
+
     }
     catch (e) {
         return {
@@ -272,6 +282,7 @@ const productReviewListService = async (req) =>{
         }
     }
 }
+
 const productReviewCreateService = async () => {
 
 }
@@ -286,7 +297,7 @@ module.exports = {
     ListByKeywordService,
     productBySimilerListService,
     productDetailsService,
-    productReviewListService,
+    ReviewListService,
     productReviewCreateService
 }
 
